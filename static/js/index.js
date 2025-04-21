@@ -6,7 +6,7 @@ var NUM_INTERP_FRAMES = 240;
 var interp_images = [];
 function preloadInterpolationImages() {
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
+    var path = INTERP_BASE + "/" + String(i).padStart(6, "0") + ".jpg";
     interp_images[i] = new Image();
     interp_images[i].src = path;
   }
@@ -14,68 +14,69 @@ function preloadInterpolationImages() {
 
 function setInterpolationImage(i) {
   var image = interp_images[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
+  image.ondragstart = function () {
+    return false;
+  };
+  image.oncontextmenu = function () {
+    return false;
+  };
+  $("#interpolation-image-wrapper").empty().append(image);
 }
 
+$(document).ready(function () {
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function () {
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
+  });
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
+  var options = {
+    slidesToScroll: 1,
+    slidesToShow: 3,
+    loop: true,
+    infinite: true,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  };
 
+  // Initialize all div with carousel class
+  var carousels = bulmaCarousel.attach(".carousel", options);
+
+  // Loop on each carousel initialized
+  for (var i = 0; i < carousels.length; i++) {
+    // Add listener to  event
+    carousels[i].on("before:show", (state) => {
+      console.log(state);
     });
+  }
 
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 3,
-			loop: true,
-			infinite: true,
-			autoplay: false,
-			autoplaySpeed: 3000,
-    }
+  // Access to bulmaCarousel instance of an element
+  var element = document.querySelector("#my-element");
+  if (element && element.bulmaCarousel) {
+    // bulmaCarousel instance is available as element.bulmaCarousel
+    element.bulmaCarousel.on("before-show", function (state) {
+      console.log(state);
+    });
+  }
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
-    }
-
-    // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
-    if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
-    }
-
-    /*var player = document.getElementById('interpolation-video');
+  /*var player = document.getElementById('interpolation-video');
     player.addEventListener('loadedmetadata', function() {
       $('#interpolation-slider').on('input', function(event) {
         console.log(this.value, player.duration);
         player.currentTime = player.duration / 100 * this.value;
       })
     }, false);*/
-    preloadInterpolationImages();
+  preloadInterpolationImages();
 
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+  $("#interpolation-slider").on("input", function (event) {
+    setInterpolationImage(this.value);
+  });
+  setInterpolationImage(0);
+  $("#interpolation-slider").prop("max", NUM_INTERP_FRAMES - 1);
 
-    bulmaSlider.attach();
-
-})
+  bulmaSlider.attach();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const fadeEls = document.querySelectorAll(".fade-in");
@@ -96,3 +97,96 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fadeEls.forEach((el) => observer.observe(el));
 });
+function initCarousel() {
+  let currentSlide = 0;
+  const slidesPerGroup = 3;
+  const track = document.querySelector(".video-carousel-track");
+  const originalSlides = Array.from(document.querySelectorAll(".video-slide"));
+  const dotsContainer = document.getElementById("carousel-dots");
+
+  if (!track || originalSlides.length === 0 || !dotsContainer) {
+    console.error("Carousel elements not found in DOM.");
+    return;
+  }
+
+  function cloneSlides() {
+    const prepend = originalSlides
+      .slice(-slidesPerGroup)
+      .map((el) => el.cloneNode(true));
+    const append = originalSlides
+      .slice(0, slidesPerGroup)
+      .map((el) => el.cloneNode(true));
+
+    prepend.reverse().forEach((node) => track.prepend(node));
+    append.forEach((node) => track.append(node));
+  }
+
+  cloneSlides();
+
+  let totalSlides = document.querySelectorAll(".video-slide").length;
+  const totalGroups = originalSlides.length;
+  const maxSlideIndex = totalGroups - 1;
+  let trueSlideIndex = 0;
+
+  for (let i = 0; i < totalGroups; i++) {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.addEventListener("click", () => {
+      currentSlide = i + slidesPerGroup;
+      trueSlideIndex = i;
+      updateCarousel();
+      updateDots();
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateDots() {
+    const dots = document.querySelectorAll(".carousel-dots .dot");
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === trueSlideIndex);
+    });
+  }
+
+  function updateCarousel(animate = true) {
+    const slideWidth = track.clientWidth / slidesPerGroup;
+    track.style.transition = animate ? "transform 0.5s ease-in-out" : "none";
+    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    updateDots();
+  }
+
+  function nextSlide() {
+    currentSlide++;
+    trueSlideIndex = (trueSlideIndex + 1) % totalGroups;
+    updateCarousel();
+    if (currentSlide === totalSlides - slidesPerGroup) {
+      setTimeout(() => {
+        currentSlide = slidesPerGroup;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  function prevSlide() {
+    currentSlide--;
+    trueSlideIndex = (trueSlideIndex - 1 + totalGroups) % totalGroups;
+    updateCarousel();
+    if (currentSlide === 0) {
+      setTimeout(() => {
+        currentSlide = originalSlides.length;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  window.addEventListener("resize", () => updateCarousel(false));
+  currentSlide = slidesPerGroup;
+  updateCarousel(false);
+  updateDots();
+
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+}
+
+// ✅ DOMが読み込まれてから実行
+window.addEventListener("DOMContentLoaded", initCarousel);
