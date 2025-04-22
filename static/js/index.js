@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target); // 一度表示されたら監視解除（任意）
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -188,5 +188,4 @@ function initCarousel() {
   }, 3000);
 }
 
-// ✅ DOMが読み込まれてから実行
 window.addEventListener("DOMContentLoaded", initCarousel);
