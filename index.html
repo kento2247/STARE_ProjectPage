@@ -63,19 +63,6 @@
   </head>
 
   <body>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var video = document.getElementById("summaryVideo");
-        video.currentTime = 1;
-      });
-      document.addEventListener("DOMContentLoaded", function () {
-        var videos = document.querySelectorAll(".fast-video");
-        videos.forEach(function (video) {
-          video.playbackRate = 8;
-        });
-      });
-    </script>
-
     <!-- Hero -->
     <section class="hero">
       <div class="hero-body">
@@ -176,6 +163,161 @@
         </div>
       </div>
     </section>
+
+    <!-- zero-shot environment -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered" style="margin: 0">
+          Zero‑Shot Transfer
+        </h2>
+
+        <div class="video-carousel-wrapper">
+          <div class="carousel-dots has-text-centered" id="carousel-dots"></div>
+          <button class="carousel-btn left" onclick="prevSlide()">
+            &#9664;
+          </button>
+
+          <div class="video-carousel-track">
+            <!-- 1 -->
+            <div class="video-slide">
+              <div
+                class="card video-card"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="card-image is-relative">
+                  <video
+                    class="fast-video"
+                    poster=""
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    style="max-width: 100%; height: auto"
+                  >
+                    <source
+                      src="./static/videos/demo/demo_coke.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div class="card-content">
+                  <div class="content">Instruction: "I want to drink coke"</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="video-slide">
+              <div
+                class="card video-card"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="card-image is-relative">
+                  <video
+                    class="fast-video"
+                    poster=""
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    style="max-width: 100%; height: auto"
+                  >
+                    <source
+                      src="./static/videos/demo/demo_hair_gel.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Instruction: "I want to use hair gel"
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="video-slide">
+              <div
+                class="card video-card"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="card-image is-relative">
+                  <video
+                    class="fast-video"
+                    poster=""
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    style="max-width: 100%; height: auto"
+                  >
+                    <source
+                      src="./static/videos/demo/demo_spam.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div class="card-content">
+                  <div class="content">Instruction: "I want to eat meat."</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="video-slide">
+              <div
+                class="card video-card"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="card-image is-relative">
+                  <video
+                    class="fast-video"
+                    poster=""
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    style="max-width: 100%; height: auto"
+                  >
+                    <source
+                      src="./static/videos/demo/demo_tomato_soup.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Instruction: "I want to drink tomato soup."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-btn right" onclick="nextSlide()">
+            &#9654;
+          </button>
+        </div>
+      </div>
+    </section>
+    <!--/ zero-shot environment -->
 
     <!-- Abstract. -->
     <section class="section fade-in">
