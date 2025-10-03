@@ -1,830 +1,645 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="STARE: Scene Text-Aware Multimodal Retrieval for Everyday Objects"
-    />
-    <meta
-      name="keywords"
-      content="Scene Text, Multimodal Retrieval, Crosslingual, World Knowledge, Mobile Service Robot"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      STARE: Scene Text-Aware Multimodal Retrieval for Everyday Objects
-    </title>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ELFM01TKSG"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="STARE: Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects" />
+  <meta name="keywords"
+    content="Scene Text, Multimodal Retrieval, Crosslingual, World Knowledge, Mobile Service Robot" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>
+    STARE: Scene Text-Aware Multimodal Retrieval for Everyday Objects
+  </title>
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELFM01TKSG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-      gtag("js", new Date());
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-      gtag("config", "G-PYVRSFMDRL");
-    </script>
+    gtag("js", new Date());
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-      rel="stylesheet"
-    />
+    gtag("config", "G-PYVRSFMDRL");
+  </script>
 
-    <link rel="stylesheet" href="./static/css/bulma.min.css" />
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-    />
-    <link rel="stylesheet" href="./static/css/index.css" />
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/bulma.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="./static/css/index.css" />
 
-    <!-- added mathjax -->
-    <script
-      type="text/javascript"
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
-    ></script>
-  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 
-  <body>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container is-max-widescreen">
-          <div class="columns is-centered">
+  <!-- added mathjax -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              STARE: Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Under Review</span>
+            </div>
+
             <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">
-                STARE: Scene Text-Aware Multimodal Retrieval for Everyday
-                Objects
-              </h1>
-              <div class="is-size-5 publication-authors">
-                <span class="author-block">Under Review</span>
-              </div>
+              <div class="publication-links">
+                <span class="link-block">
+                  <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
+                  <!-- <a href="" class="external-link button is-normal is-rounded is-light" style="background-color: #f5f5f5; color: black;"> -->
+                  <a href="" class="external-link button is-normal is-rounded is-light"
+                    style="background-color: #f5f5f5; color: black">
+                    <span class="icon">
+                      <!-- <i class="ai ai-arxiv"></i> -->
+                      <i class="fas fa-lock"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
 
-              <div class="column has-text-centered">
-                <div class="publication-links">
-                  <span class="link-block">
-                    <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
-                    <!-- <a href="" class="external-link button is-normal is-rounded is-light" style="background-color: #f5f5f5; color: black;"> -->
-                    <a
-                      href=""
-                      class="external-link button is-normal is-rounded is-light"
-                      style="background-color: #f5f5f5; color: black"
-                    >
-                      <span class="icon">
-                        <!-- <i class="ai ai-arxiv"></i> -->
-                        <i class="fas fa-lock"></i>
-                      </span>
-                      <span>arXiv</span>
-                    </a>
-                  </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
+                  <a href="" class="external-link button is-normal is-rounded is-light"
+                    style="background-color: #f5f5f5; color: black">
+                    <span class="icon">
+                      <i class="fas fa-lock"></i>
+                      <!-- <i class="fas fa-database"></i> -->
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
 
-                  <!-- Dataset Link. -->
-                  <span class="link-block">
-                    <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
-                    <a
-                      href=""
-                      class="external-link button is-normal is-rounded is-light"
-                      style="background-color: #f5f5f5; color: black"
-                    >
-                      <span class="icon">
-                        <i class="fas fa-lock"></i>
-                        <!-- <i class="fas fa-database"></i> -->
-                      </span>
-                      <span>Dataset</span>
-                    </a>
-                  </span>
-
-                  <!-- Code Link. -->
-                  <span class="link-block">
-                    <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
-                    <a
-                      href=""
-                      class="external-link button is-normal is-rounded is-light"
-                      style="background-color: #f5f5f5; color: black"
-                    >
-                      <span class="icon">
-                        <!-- <i class="fab fa-github"></i> -->
-                        <i class="fas fa-lock"></i>
-                      </span>
-                      <span>Code</span>
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <p>
-                The paper is currently under review. The links will be made
-                available after publication.
-                <br />
-                <b
-                  >In the meantime, our code and dataset are provided as
-                  supplementary materials.</b
-                >
-                <br />
-                <br />
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="hero teaser fade-in">
-      <div class="container is-max-desktop">
-        <div class="hero-body">
-          <video
-            id="summaryVideo"
-            poster=""
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-            style="border-radius: 15px"
-          >
-            <source src="./static/videos/summary.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-    </section>
-
-    <!-- zero-shot environment -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered" style="margin: 0">
-          Zero‑Shot Transfer
-        </h2>
-
-        <div class="video-carousel-wrapper">
-          <div class="carousel-dots has-text-centered" id="carousel-dots"></div>
-          <button class="carousel-btn left" onclick="prevSlide()">
-            &#9664;
-          </button>
-
-          <div class="video-carousel-track">
-            <!-- 1 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/coke.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">Instruction: "I want to drink coke"</div>
-                </div>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <!-- <a href="" class="external-link button is-normal is-rounded is-dark"> -->
+                  <a href="" class="external-link button is-normal is-rounded is-light"
+                    style="background-color: #f5f5f5; color: black">
+                    <span class="icon">
+                      <!-- <i class="fab fa-github"></i> -->
+                      <i class="fas fa-lock"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
               </div>
             </div>
-
-            <!-- 2 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/hair_gel.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "I want to use hair gel"
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/spam.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">Instruction: "I want to eat meat."</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/tomato_soup.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "I want to drink tomato soup."
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/sponge.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "Clean the kitchen using sponge"
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/sesame.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "Give me the sesame mill jar."
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 7 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/mustard.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "I am locking for some yellow mustard"
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 8 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/aluminum.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "Can you find me the box of aluminum foil?"
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 9 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/windex.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "Take the spray bottle labeled windex"
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 10 -->
-            <div class="video-slide">
-              <div
-                class="card video-card"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <div class="card-image is-relative">
-                  <video
-                    class="fast-video"
-                    poster=""
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: auto"
-                  >
-                    <source
-                      src="./static/videos/demo/maxwell.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    Instruction: "Could you make coffee?"
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="carousel-btn right" onclick="nextSlide()">
-            &#9654;
-          </button>
-        </div>
-      </div>
-    </section>
-    <!--/ zero-shot environment -->
-
-    <!-- Abstract. -->
-    <section class="section fade-in">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Abstract</h2>
-            <div class="content has-text-justified">
-              <p>
-                In this study, we develop a mobile service robot that
-                <b>retrieves and transports everyday objects</b> based on
-                free-form instructions that may refer to both visual features
-                and <b>scene text</b>. Our approach focuses on retrieving
-                relevant images of target objects from a set of pre-collected
-                images in diverse environments. This task is challenging because
-                it requires not only an understanding of the visual features and
-                spatial relationships of objects, but also the ability to
-                <b>interpret scene text embedded in the environment</b>.
-              </p>
-              <p>
-                To address this, we propose Scene Text-Aware Multimodal
-                Retrieval Model for Everyday Objects (<b>STARE</b>), which
-                leverages both visual and textual cues in response to free-form
-                instructions. STARE introduces
-                <b>Crosslingual Visual Prompts</b> to enhance scene text
-                interpretation, and models the complex relationships between
-                named entities in the instructions and their corresponding
-                objects.
-              </p>
-              <p>
-                We evaluated STARE using two novel benchmarks,
-                <b>GoGetIt</b> and <b>TextCaps-test</b>, both of which consist
-                of real-world indoor/outdoor images and instructions. The
-                results show that
-                <b>STARE outperformed all baseline methods</b> on standard
-                multimodal retrieval metrics. Furthermore, we conducted physical
-                experiments in a zero-shot transfer setting and achieved an
-                overall success rate exceeding 80%.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--/ Abstract. -->
-
-    <!-- overview -->
-    <section class="section fade-in">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Overview</h2>
-            <p class="content has-text-justified">
-              We address the task of
-              <b>retrieving relevant images from a pre-collected dataset</b>
-              based on free-form natural language instructions for object
-              manipulation or navigation. We define this task as Scene Text
-              Aware Multimodal Retrieval (<b>STMR</b>), where the retrieved
-              images may or may not contain scene text.
-            </p>
-            <br />
-            <figure class="image">
-              <img src="./static/images/eyecatch.png" alt="." />
-            </figure>
-            <p class="content has-text-justified">
-              <b>Fig. 1:</b> Typical sample of STMR task. <b>STARE</b> retrieves
-              target objects based on free-form language instructions using
-              <b>scene text and visual context</b>.
-            </p>
-            <div class="columns is-centered">
-              <p class="column is-four-fifths">
-                <br />
-                <br />
-                <b>
-                  To tackle the task, we propose a novel approach that
-                  integrates scene text and visual features using Crosslingual
-                  Visual Prompts (CVP) and a Scene Text Reranker—enhancing
-                  retrieval based on free-form natural language instructions.
-                </b>
-
-                <br />
-                <br />
-              </p>
-            </div>
-            <div class="content">
-              <p><b>CORE NOVELTIES:</b></p>
-              <ol>
-                <li class="content has-text-justified">
-                  <b>Multi-Form Instruction Encoder</b>
-                  captures complex concepts in user instructions by
-                  incorporating multi-level aligned language features, including
-                  structured descriptions generated by large language models
-                  (LLMs).
-                </li>
-                <li class="content has-text-justified">
-                  <b>Scene Text Aware Visual Encoder</b>
-                  integrates scene texts into visual representations using
-                  Crosslingual Visual Prompt (CVP), overlapped patchified
-                  features, and multi-scale aligned features—producing narrative
-                  representations that highlight relevant text.
-                </li>
-                <li class="content has-text-justified">
-                  <b>Scene Text Reranker</b>
-                  models the complex relationships between named entities
-                  (signifiers) and their corresponding objects (signified
-                  concepts), complementing similarity-based retrieval with
-                  semantically enriched reranking.
-                </li>
-                <li class="content has-text-justified">
-                  <b>Benchmarks: </b>
-                  We construct the GoGetIt and TextCaps-test benchmarks, which
-                  contain navigation/manipulation instructions as well as images
-                  including scene texts.
-                </li>
-              </ol>
-            </div>
-
-            <br />
-            <br />
-            <figure class="image">
-              <img src="./static/images/model.png" alt="." />
-            </figure>
-            <p class="content has-text-justified">
+            <p>
+              The paper is currently under review. The links will be made
+              available after publication.
               <br />
-              <b>Fig. 2:</b> Overview of STARE. Given a natural language
-              instruction and a set of pre-collected images, the model retrieves
-              the most relevant images by integrating scene texts and visual
-              features through three modules: MFIE, STVE, and STRR.
+              <b>In the meantime, our code and dataset are provided as
+                supplementary materials.</b>
+              <br />
+              <br />
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <div
-              style="
+  <section class="hero teaser fade-in">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="summaryVideo" poster="" controls muted loop playsinline height="100%" style="border-radius: 15px">
+          <source src="./static/videos/summary.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- zero-shot environment -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered" style="margin: 0">
+        Zero‑Shot Transfer
+      </h2>
+
+      <div class="video-carousel-wrapper">
+        <div class="carousel-dots has-text-centered" id="carousel-dots"></div>
+        <button class="carousel-btn left" onclick="prevSlide()">
+          &#9664;
+        </button>
+
+        <div class="video-carousel-track">
+          <!-- 1 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/coke.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">Instruction: "I want to drink coke"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/hair_gel.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "I want to use hair gel"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/spam.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">Instruction: "I want to eat meat."</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/tomato_soup.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "I want to drink tomato soup."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/sponge.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "Clean the kitchen using sponge"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/sesame.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "Give me the sesame mill jar."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/mustard.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "I am locking for some yellow mustard"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/aluminum.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "Can you find me the box of aluminum foil?"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/windex.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "Take the spray bottle labeled windex"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="video-slide">
+            <div class="card video-card" style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+              <div class="card-image is-relative">
+                <video class="fast-video" poster="" autoplay muted loop playsinline
+                  style="max-width: 100%; height: auto">
+                  <source src="./static/videos/demo/maxwell.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  Instruction: "Could you make coffee?"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn right" onclick="nextSlide()">
+          &#9654;
+        </button>
+      </div>
+    </div>
+  </section>
+  <!--/ zero-shot environment -->
+
+  <!-- Abstract. -->
+  <section class="section fade-in">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              In this study, we develop a mobile service robot that
+              <b>retrieves and transports everyday objects</b> based on
+              free-form instructions that may refer to both visual features
+              and <b>scene text</b>. Our approach focuses on retrieving
+              relevant images of target objects from a set of pre-collected
+              images in diverse environments. This task is challenging because
+              it requires not only an understanding of the visual features and
+              spatial relationships of objects, but also the ability to
+              <b>interpret scene text embedded in the environment</b>.
+            </p>
+            <p>
+              To address this, we propose Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects
+              (<b>STARE</b>), which
+              leverages both visual and textual cues in response to free-form
+              instructions. STARE introduces
+              <b>Crosslingual Visual Prompts</b> to enhance scene text
+              interpretation, and models the complex relationships between
+              named entities in the instructions and their corresponding
+              objects.
+            </p>
+            <p>
+              We evaluated STARE using two novel benchmarks,
+              <b>GoGetIt</b> and <b>TextCaps-test</b>, both of which consist
+              of real-world indoor/outdoor images and instructions. The
+              results show that
+              <b>STARE outperformed all baseline methods</b> on standard
+              multimodal retrieval metrics. Furthermore, we conducted physical
+              experiments in a zero-shot transfer setting and achieved an
+              overall success rate exceeding 80%.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Abstract. -->
+
+  <!-- overview -->
+  <section class="section fade-in">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <p class="content has-text-justified">
+            We address the task of
+            <b>retrieving relevant images from a pre-collected dataset</b>
+            based on free-form natural language instructions for object
+            manipulation or navigation. We define this task as Scene Text
+            Aware Multimodal Retrieval (<b>STMR</b>), where the retrieved
+            images may or may not contain scene text.
+          </p>
+          <br />
+          <figure class="image">
+            <img src="./static/images/eyecatch.png" alt="." />
+          </figure>
+          <p class="content has-text-justified">
+            <b>Fig. 1:</b> Typical sample of STMR task. <b>STARE</b> retrieves
+            target objects based on free-form language instructions using
+            <b>scene text and visual context</b>.
+          </p>
+          <div class="columns is-centered">
+            <p class="column is-four-fifths">
+              <br />
+              <br />
+              <b>
+                To tackle the task, we propose a novel approach that
+                integrates scene text and visual features using Crosslingual
+                Visual Prompts (CVP) and a Scene Text Reranker—enhancing
+                retrieval based on free-form natural language instructions.
+              </b>
+
+              <br />
+              <br />
+            </p>
+          </div>
+          <div class="content">
+            <p><b>CORE NOVELTIES:</b></p>
+            <ol>
+              <li class="content has-text-justified">
+                <b>Multi-Form Instruction Encoder</b>
+                captures complex concepts in user instructions by
+                incorporating multi-level aligned language features, including
+                structured descriptions generated by large language models
+                (LLMs).
+              </li>
+              <li class="content has-text-justified">
+                <b>Scene Text Aware Visual Encoder</b>
+                integrates scene texts into visual representations using
+                Crosslingual Visual Prompt (CVP), overlapped patchified
+                features, and multi-scale aligned features—producing narrative
+                representations that highlight relevant text.
+              </li>
+              <li class="content has-text-justified">
+                <b>Scene Text Reranker</b>
+                models the complex relationships between named entities
+                (signifiers) and their corresponding objects (signified
+                concepts), complementing similarity-based retrieval with
+                semantically enriched reranking.
+              </li>
+              <li class="content has-text-justified">
+                <b>Benchmarks: </b>
+                We construct the GoGetIt and TextCaps-test benchmarks, which
+                contain navigation/manipulation instructions as well as images
+                including scene texts.
+              </li>
+            </ol>
+          </div>
+
+          <br />
+          <br />
+          <figure class="image">
+            <img src="./static/images/model.png" alt="." />
+          </figure>
+          <p class="content has-text-justified">
+            <br />
+            <b>Fig. 2:</b> Overview of STARE. Given a natural language
+            instruction and a set of pre-collected images, the model retrieves
+            the most relevant images by integrating scene texts and visual
+            features through three modules: MFIE, STVE, and STRR.
+          </p>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div style="
                 background-color: #f4f8fe;
                 border-radius: 10px;
                 padding: 20px;
                 margin-bottom: 20px;
-              "
-            >
-              <h3 class="title is-5 has-text-justified">
-                Multi-Form Instruction Encoder (MFIE)
-              </h3>
-              <p class="content has-text-justified">
-                The MFIE models complex expressions within an instruction by
-                incorporating multi-level aligned language features, including
-                descriptions generated using world knowledge from LLMs.
-              </p>
-            </div>
+              ">
+            <h3 class="title is-5 has-text-justified">
+              Multi-Form Instruction Encoder (MFIE)
+            </h3>
+            <p class="content has-text-justified">
+              The MFIE models complex expressions within an instruction by
+              incorporating multi-level aligned language features, including
+              descriptions generated using world knowledge from LLMs.
+            </p>
+          </div>
 
-            <div
-              style="
+          <div style="
                 background-color: #f2f8f2;
                 border-radius: 10px;
                 padding: 20px;
                 margin-bottom: 20px;
-              "
-            >
-              <h3 class="title is-5 has-text-justified">
-                Scene Text Aware Visual Encoder (STVE)
-              </h3>
-              <p class="content has-text-justified">
-                The STVE combines narrative representations that consider scene
-                texts, overlapped patchified features, and multi-scale aligned
-                features.
-              </p>
-            </div>
+              ">
+            <h3 class="title is-5 has-text-justified">
+              Scene Text Aware Visual Encoder (STVE)
+            </h3>
+            <p class="content has-text-justified">
+              The STVE combines narrative representations that consider scene
+              texts, overlapped patchified features, and multi-scale aligned
+              features.
+            </p>
+          </div>
 
-            <div
-              style="
+          <div style="
                 background-color: #fff7f0;
                 border-radius: 10px;
                 padding: 20px;
                 margin-bottom: 20px;
-              "
-            >
-              <h3 class="title is-5 has-text-justified">
-                Scene Text Reranker (STRR)
-              </h3>
-              <p class="content has-text-justified">
-                The STRR efficiently models the highly complex relationships
-                between signifiers and their corresponding signified
-                expressions.
-              </p>
-            </div>
+              ">
+            <h3 class="title is-5 has-text-justified">
+              Scene Text Reranker (STRR)
+            </h3>
+            <p class="content has-text-justified">
+              The STRR efficiently models the highly complex relationships
+              between signifiers and their corresponding signified
+              expressions.
+            </p>
+          </div>
 
-            <div
-              style="
+          <div style="
                 background-color: #f5f5f5;
                 border-radius: 10px;
                 padding: 20px;
                 margin-bottom: 20px;
-              "
-            >
-              <h3 class="title is-5 has-text-justified">Ranked List</h3>
-              <p class="content has-text-justified">
-                Finally, the model outputs a ranked list of images that are most
-                relevant to the instruction. STARE is designed to handle both
-                images with and without scene text, enabling flexible and robust
-                retrieval in real-world environments.
-              </p>
-            </div>
+              ">
+            <h3 class="title is-5 has-text-justified">Ranked List</h3>
+            <p class="content has-text-justified">
+              Finally, the model outputs a ranked list of images that are most
+              relevant to the instruction. STARE is designed to handle both
+              images with and without scene text, enabling flexible and robust
+              retrieval in real-world environments.
+            </p>
           </div>
         </div>
       </div>
-    </section>
-    <!--/ overview -->
+    </div>
+  </section>
+  <!--/ overview -->
 
-    <!-- results & analysis -->
-    <section class="section fade-in">
-      <div class="container is-max-desktop">
-        <br />
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Results</h2>
-            <h3 class="title is-4 has-text-justified">Qualitative Results</h3>
-            <figure class="image">
-              <img
-                src="./static/images/success.png"
-                alt="Successful cases of the proposed method"
-              />
-            </figure>
+  <!-- results & analysis -->
+  <section class="section fade-in">
+    <div class="container is-max-desktop">
+      <br />
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <h3 class="title is-4 has-text-justified">Qualitative Results</h3>
+          <figure class="image">
+            <img src="./static/images/success.png" alt="Successful cases of the proposed method" />
+          </figure>
+          <p class="content has-text-justified">
+            <br />
+            <b>Fig. 3:</b> Qualitative results of the proposed method and a
+            baseline method on the following benchmarks: (a) the RefText
+            subset of the GoGetIt benchmark, (b) the Instruction subset of the
+            GoGetIt benchmark, and (c) the TextCaps-test benchmark. The given
+            instructions for each sample were as follows: (a) "a long box of
+            non-stick baking paper."; (b) "Pass me the red container of
+            Sun-Maid raisins on the kitchen counter."; (c) "Buy the red Orbit
+            candy at the kiosk."
+          </p>
+
+          <br />
+          <figure class="image">
+            <img src="./static/images/hardware_success.png"
+              alt="Successful cases of the proposed method from zero-shot transfer experiments" />
+          </figure>
+          <p class="content has-text-justified">
+            <br />
+            <b>Fig. 4:</b> Qualitative results of the hardware experiments.
+            The given instruction was "Pass me the Maxwell can." The top-2
+            retrieved images and the scene of the robot fetching the
+            corresponding object are shown.
+          </p>
+          <br />
+
+          <h3 class="title is-4 has-text-justified">Quantitative Results</h3>
+          <div class="columns is-centered">
             <p class="content has-text-justified">
-              <br />
-              <b>Fig. 3:</b> Qualitative results of the proposed method and a
-              baseline method on the following benchmarks: (a) the RefText
-              subset of the GoGetIt benchmark, (b) the Instruction subset of the
-              GoGetIt benchmark, and (c) the TextCaps-test benchmark. The given
-              instructions for each sample were as follows: (a) "a long box of
-              non-stick baking paper."; (b) "Pass me the red container of
-              Sun-Maid raisins on the kitchen counter."; (c) "Buy the red Orbit
-              candy at the kiosk."
+              <b>Table 1:</b> Quantitative results. The best results are
+              marked in bold.
             </p>
-
-            <br />
-            <figure class="image">
-              <img
-                src="./static/images/hardware_success.png"
-                alt="Successful cases of the proposed method from zero-shot transfer experiments"
-              />
-            </figure>
-            <p class="content has-text-justified">
-              <br />
-              <b>Fig. 4:</b> Qualitative results of the hardware experiments.
-              The given instruction was "Pass me the Maxwell can." The top-2
-              retrieved images and the scene of the robot fetching the
-              corresponding object are shown.
-            </p>
-            <br />
-
-            <h3 class="title is-4 has-text-justified">Quantitative Results</h3>
-            <div class="columns is-centered">
-              <p class="content has-text-justified">
-                <b>Table 1:</b> Quantitative results. The best results are
-                marked in bold.
-              </p>
-            </div>
-            <figure class="image">
-              <img src="./static/images/result.png" alt="." />
-            </figure>
-            <br />
-            <br />
           </div>
+          <figure class="image">
+            <img src="./static/images/result.png" alt="." />
+          </figure>
+          <br />
+          <br />
         </div>
       </div>
-    </section>
-    <!--/ results & analysis -->
+    </div>
+  </section>
+  <!--/ results & analysis -->
 
-    <!-- citation -->
-    <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>
+  <!-- citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
     To be appeared.
     </code></pre>
-      </div>
-    </section>
-    <!--/ citation -->
+    </div>
+  </section>
+  <!--/ citation -->
 
-    <footer class="footer">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-8">
-            <div class="content">
-              <p>
-                Website template is borrowed from
-                <a href="https://github.com/nerfies/nerfies.github.io"
-                  >NeRFies</a
-                >
-                licensed under a
-                <a
-                  rel="license"
-                  href="http://creativecommons.org/licenses/by-sa/4.0/"
-                  >Creative Commons Attribution-ShareAlike 4.0 International
-                  License</a
-                >.
-              </p>
-            </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Website template is borrowed from
+              <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+              licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+                Attribution-ShareAlike 4.0 International
+                License</a>.
+            </p>
           </div>
         </div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
+
 </html>
