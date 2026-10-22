@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="STARE: Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects" />
+  <meta name="description" content="STARE: Scene Text-Aware multimodal Retrieval for Everyday objects" />
   <meta name="keywords"
     content="Scene Text, Multimodal Retrieval, Crosslingual, World Knowledge, Mobile Service Robot" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>
-    STARE: Scene Text-Aware Multimodal Retrieval for Everyday Objects
+    STARE: Scene Text-Aware multimodal Retrieval for Everyday objects
   </title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -39,16 +39,6 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-  <script>
-    function confirmCodeDownload(event) {
-      const message =
-        "To preserve double-blind review, we are not publicly releasing the code on GitHub at this time. " +
-        "Instead, the code is available as a downloadable ZIP file. Do you want to continue?";
-      if (!window.confirm(message)) {
-        event.preventDefault();
-      }
-    }
-  </script>
 
   <!-- added mathjax -->
   <script type="text/javascript" id="MathJax-script" async
@@ -63,10 +53,22 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              STARE: Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects
+              STARE: Scene Text-Aware multimodal Retrieval for Everyday objects
             </h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Under Review</span>
+              <span class="author-block">Kento Tokura,</span>
+              <span class="author-block">Ryosuke Korekata,</span>
+              <span class="author-block">Daichi Yashima,</span>
+              <span class="author-block">Kei Katsumata,</span>
+              <span class="author-block">Kanon Amemiya,</span>
+              <span class="author-block">Miyu Goko,</span>
+              <span class="author-block">Komei Sugiura</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Keio University</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><b>ACCV 2026 Workshop on Multimodal AI for Science and the Real World (MM4SciReal)</b></span>
             </div>
 
             <div class="column has-text-centered">
@@ -99,11 +101,10 @@
 
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="./static/code.zip" download="code.zip"
-                    onclick="confirmCodeDownload(event)" class="external-link button is-normal is-rounded is-light"
-                    style="background-color: #3273dc; color: white; border-color: #3273dc;">
+                  <a href="https://github.com/keio-smilab24/STARE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <i class="fas fa-download"></i>
+                      <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
                   </a>
@@ -111,11 +112,7 @@
               </div>
             </div>
             <p>
-              The paper is currently under review. The links will be made
-              available after publication.
-              <br />
-              <b>In the meantime, our code and dataset are provided as
-                supplementary materials.</b>
+              The arXiv and dataset links will be made available soon.
               <br />
               <br />
             </p>
@@ -383,7 +380,7 @@
               <b>interpret scene text embedded in the environment</b>.
             </p>
             <p>
-              To address this, we propose Scene Text-Aware Retrieval-Augumented Generation for Everyday Objects
+              To address this, we propose Scene Text-Aware multimodal Retrieval for Everyday objects
               (<b>STARE</b>), which
               leverages both visual and textual cues in response to free-form
               instructions. STARE introduces
@@ -624,9 +621,13 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>
-    To be appeared.
-    </code></pre>
+      <pre><code>@inproceedings{tokura2026stare,
+  title     = {{STARE}: Scene Text-Aware multimodal Retrieval for Everyday objects},
+  author    = {Kento Tokura and Ryosuke Korekata and Daichi Yashima and Kei Katsumata and Kanon Amemiya and Miyu Goko and Komei Sugiura},
+  booktitle = {ACCV 2026 Workshop on Multimodal AI for Science and the Real World (MM4SciReal)},
+  year      = {2026},
+  note      = {Accepted, to appear}
+}</code></pre>
     </div>
   </section>
   <!--/ citation -->
